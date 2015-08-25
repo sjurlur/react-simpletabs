@@ -20,41 +20,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
+
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -68,9 +68,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(1);
 	var classNames = __webpack_require__(2);
 
-	if (true) {
-	  __webpack_require__(3);
-	}
 
 	var Tabs = React.createClass({
 	  displayName: 'Tabs',
@@ -99,7 +96,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  componentDidMount:function() {
 	    var index = this.state.tabActive;
-	    var $selectedPanel = this.refs['tab-panel'];
+	    var $selectedPanel = this.refs['content'];
 	    var $selectedMenu = this.refs[("tab-menu-" + index)];
 
 	    if (this.props.onMount) {
@@ -110,7 +107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if(newProps.tabActive){ this.setState({tabActive: newProps.tabActive}) }
 	  },
 	  render:function () {
-	    var className = classNames('tabs', this.props.className);
+	    var className = classNames('org_tabs', this.props.className);
 	    return (
 	      React.createElement("div", {className: className}, 
 	        this._getMenuItems(), 
@@ -121,7 +118,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  setActive:function(index, e) {
 	    var onAfterChange = this.props.onAfterChange;
 	    var onBeforeChange = this.props.onBeforeChange;
-	    var $selectedPanel = this.refs['tab-panel'];
+	    var $selectedPanel = this.refs['content'];
 	    var $selectedTabMenu = this.refs[("tab-menu-" + index)];
 
 	    if (onBeforeChange) {
@@ -153,7 +150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ref = ("tab-menu-" + (index + 1));
 	        var title = $panel.props.title;
 	        var classes = classNames(
-	          'tabs-menu-item',
+	          'menu-item',
 	          this.state.tabActive === (index + 1) && 'is-active'
 	        );
 
@@ -167,8 +164,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }.bind(this));
 
 	    return (
-	      React.createElement("nav", {className: "tabs-navigation"}, 
-	        React.createElement("ul", {className: "tabs-menu"}, $menuItems)
+	      React.createElement("nav", {className: "navigation"}, 
+	        React.createElement("ul", {className: "menu"}, $menuItems)
 	      )
 	    );
 	  },
@@ -177,7 +174,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var $panel = this.props.children[index];
 
 	    return (
-	      React.createElement("article", {ref: "tab-panel", className: "tab-panel"}, 
+	      React.createElement("section", {ref: "content", className: "content"}, 
 	        $panel
 	      )
 	    );
@@ -203,7 +200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 
@@ -211,7 +208,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/** @jsx React.DOM */function classNames() {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/** @jsx React.DOM *//*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+
+	function classNames() {
 		var classes = '';
 		var arg;
 
@@ -237,18 +240,20 @@ return /******/ (function(modules) { // webpackBootstrap
 		return classes.substr(1);
 	}
 
-	// safely export classNames in case the script is included directly on a page
+	// safely export classNames for node / browserify
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
 	}
 
+	// safely export classNames for RequireJS
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+			return classNames;
+		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	}
 
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ])
 });
+;
