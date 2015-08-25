@@ -3,9 +3,6 @@
 var React = require('react');
 var classNames = require('classnames');
 
-if (process.env.NODE_ENV !== 'test') {
-  require('./react-simpletabs.css');
-}
 
 var Tabs = React.createClass({
   displayName: 'Tabs',
