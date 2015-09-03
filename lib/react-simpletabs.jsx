@@ -86,6 +86,7 @@ var Tabs = React.createClass({
         var title = $panel.props.title;
         var classes = classNames(
           'menu-item',
+          $panel.props.classNameLI,
           this.state.tabActive === (index + 1) && 'is-active'
         );
 
@@ -126,7 +127,8 @@ Tabs.Panel = React.createClass({
     ]).isRequired
   },
   render () {
-    return <div>{this.props.children}</div>;
+    var classes = classNames(this.props.classNamePanel);
+    return <div className={classes}>{this.props.children}</div>;
   }
 });
 

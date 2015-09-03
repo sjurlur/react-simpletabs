@@ -151,6 +151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var title = $panel.props.title;
 	        var classes = classNames(
 	          'menu-item',
+	          $panel.props.classNameLI,
 	          this.state.tabActive === (index + 1) && 'is-active'
 	        );
 
@@ -191,7 +192,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ]).isRequired
 	  },
 	  render:function () {
-	    return React.createElement("div", null, this.props.children);
+	    var classes = classNames(this.props.classNamePanel);
+	    return React.createElement("div", {className: classes}, this.props.children);
 	  }
 	});
 
