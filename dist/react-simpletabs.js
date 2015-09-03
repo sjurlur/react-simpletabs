@@ -158,7 +158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return (
 	          React.createElement("li", {ref: ref, key: index, className: classes}, 
 	            React.createElement("a", {href: "#", onClick: this.setActive.bind(this, index + 1)}, 
-	              title
+	              React.createElement("span", {className: "title"}, title)
 	            )
 	          )
 	        );
